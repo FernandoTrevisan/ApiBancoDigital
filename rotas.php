@@ -1,7 +1,13 @@
 <?php
 
-use ApiBancoDigital\controller\Controller;
-
+//use ApiBancoDigital\controller\Controller;
+use ApiBancoDigital\Controller\
+{
+    ChavePixController,
+    ContaController,
+    CorrentistaController,
+    TransacaoController
+};
 
 $url = parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH);
 
