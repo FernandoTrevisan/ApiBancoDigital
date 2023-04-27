@@ -1,6 +1,5 @@
 <?php
 
-//use ApiBancoDigital\controller\Controller;
 use ApiBancoDigital\Controller\
 {
     ChavePixController,
@@ -9,48 +8,33 @@ use ApiBancoDigital\Controller\
     TransacaoController
 };
 
-$url = parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH);
 
-switch ($url)
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+switch($url)
 {
-       /* 
-                case '/home':
-                include 'home.php';
-                break;
-        */
-        
-        case '/correntista/save';
-       
-        break;
+    case '/correntista/save':
+        CorrentistaController::save();
+    break;
 
-        case '/conta/extrato';
-        
-        break;
+    case '/conta/extrato':
+        ContaController::extrato();
+    break;
 
-        case '/conta/pix/enviar';
-        
-        break;
+    case '/conta/pix/enviar':
+        ContaController::EnviarPix();
+    break;
 
-        case '/conta/pix/receber';
-        break;
+    case '/conta/pix/receber':
+        ContaController::ReceberPix();
+    break;
 
-        case '/correntista/entrar';
-        
-        break;
-        
+    case '/correntista/entrar':
+        CorrentistaController::entrar();
+    break;
 
-        default;
+    /* Rota não identificada */
+    default:
         http_response_code(403);
-        break;
-
-       /*       
-                default:
-                header("Location: /home");
-                break;
-        */
-
-             
-
-
+    break;
 }
-
