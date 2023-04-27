@@ -1,6 +1,5 @@
 <?php
 
-
 namespace ApiBancoDigital\controller;
 
 use Exception;

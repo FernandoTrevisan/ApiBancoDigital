@@ -9,10 +9,10 @@ class CorrentistaController extends Controller
 {
     public static function entrar()
     {
-        //
+        
     }
 
-    public static function salvar() : void
+    public static function save() : void
     {
         try
         {
@@ -33,33 +33,14 @@ class CorrentistaController extends Controller
         }
     }
 
+
     public static function listar() : void
     {
-        try
-        {
-            $model = new CorrentistaModel();
-            $model->getAllRows();
-
-            parent::getExceptionAsJSON($model->rows);
-        }
-        catch (Exception $e)
-        {
-            parent::getExceptionAsJSON($e);
-        }
+       
     }
 
-    public static function deletar() : void
+    public static function delete() : void
     {
-        try
-        {
-            $model = new CorrentistaModel();
-            $model->id = parent::getIntFromUrl(isset($_GET['id']) ? $_GET['id'] : null);
-            
-            $model->delete();
-        }
-        catch (Exception $e)
-        {
-            parent::getExceptionAsJSON($e);
-        }
+        
     }
 }
