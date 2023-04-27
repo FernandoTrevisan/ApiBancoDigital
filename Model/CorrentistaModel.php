@@ -10,19 +10,33 @@ class CorrentistaModel extends Model
 
     public function save()
     {
-        if ($this->id == null)
-            (new CorrentistaDAO())->insert($this);
+        $dao = new CorrentistaDAO();
+
+        if($this->id == null)
+            $dao->insert($this);
         else
-            (new CorrentistaDAO())->update($this);
+            $dao->update($this);
     }
 
     public function getAllRows()
     {
-        $this->rows = (new CorrentistaDAO())->select();
+        $dao = new CorrentistaDAO();
+
+        $this->rows = $dao->select();
     }
 
-    public function delete()
+    public function delete(int $id)
     {
-        (new CorrentistaDAO())->delete($this->id);
+        $dao = new CorrentistaDAO();
+
+        $dao->delete($id);
+    }
+
+    public function getById(int $id)
+    {
+        $dao = new CorrentistaDAO();
+
+        $this->rows = $dao->selectById($id);
     }
 }
+
