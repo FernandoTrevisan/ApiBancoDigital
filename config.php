@@ -2,7 +2,11 @@
 
 define('BASEDIR',dirname(__FILE__,2));
 
-// --**-- Banco de Dados --**--
+/*
+
+    --**-- Conexão do Banco de Dados --**--
+
+*/
  
 $_ENV['db']['host'] = 'localhost:3307';
 $_ENV['db']['user'] = 'root';

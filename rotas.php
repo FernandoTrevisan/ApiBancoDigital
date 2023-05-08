@@ -33,7 +33,7 @@ switch($url)
         CorrentistaController::entrar();
     break;
 
-    /* Rota não identificada */
+    
     default:
         http_response_code(403);
     break;

@@ -1,9 +1,6 @@
-<!------
-
+<!-- 
 <!DOCTYPE html>
-
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
 
@@ -52,11 +49,8 @@
    
 
 </style>
-
 </head>
-
 <body>
-
 <center>
 
     <button onclick="document.location='/correntista/save'"><p> ----- </p></button>
@@ -68,10 +62,8 @@
     <button class="last" onclick="document.location='/correntista/entrar'"><p> ----- </p></button>
 
 </center>
-
 </body>
-
 </html>
+-->
 
 
-<!--ERRO--!> 
