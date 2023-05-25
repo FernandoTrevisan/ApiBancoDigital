@@ -66,7 +66,7 @@ class ChavePixDAO extends DAO
 
         $stmt->execute();
 
-        return $stmt->fetchObject("App\Model\ChavePixModel");
+        return $stmt->fetchObject("ApiBancoDigital\Model\ChavePixModel");
     }
 
     public function delete(int $id)
