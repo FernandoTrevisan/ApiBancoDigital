@@ -2,36 +2,53 @@
 
 namespace ApiBancoDigital\Model;
 
+use ApiBancoDigital\DAO\ContaDAO;
 use ApiBancoDigital\DAO\CorrentistaDAO;
 
-/**
- * A camada model é responsável por transportar os dados da Controller até a DAO e vice-versa.
- * Também é atribuído a Model a validação dos dados da View e controle de acesso aos métodos
- * da DAO.
- */
+
 class CorrentistaModel extends Model
 {
-    /**
-     * Declaração das propriedades conforme campos da tabela no banco de dados.
-     * para saber mais sobre Propriedades de Classe, leia: https://www.php.net/manual/pt_BR/language.oop5.properties.php
-     */
+    
     public $id, $nome, $email, $cpf, $data_nascimento, $senha;
-
-    /**
-     * Declaração do método save que chamará a DAO para gravar no banco de dados
-     * o model preenchido.
-     */
+    public $rows_contas; 
+    
     public function save() : ?CorrentistaModel
     {
-        return (new CorrentistaDAO())->save($this);     
+        $dao_correntista = new CorrentistaDAO();
+        
+        $model_preenchido = $dao_correntista->save($this);
+
+        
+        if($model_preenchido->id != null)
+        {
+            $dao_conta = new ContaDAO();
+
+            
+            $conta_corrente = new ContaModel();
+            $conta_corrente->id_correntista = $model_preenchido->id;
+            $conta_corrente->saldo = 0;
+            $conta_corrente->limite = 100;
+            $conta_corrente->tipo = 'C';
+            $conta_corrente = $dao_conta->insert($conta_corrente);
+
+            $model_preenchido->rows_contas[] = $conta_corrente;
+
+            
+            $conta_poupanca = new ContaModel();
+            $conta_poupanca->id_correntista = $model_preenchido->id;
+            $conta_poupanca->saldo = 0;
+            $conta_poupanca->limite = 0;
+            $conta_poupanca->tipo = 'P';
+            $conta_poupanca = $dao_conta->insert($conta_poupanca);
+
+            $model_preenchido->rows_contas[] = $conta_poupanca;
+        }
+
+        return $model_preenchido;    
     }
 
 
-    /**
-     * Método que encapsula a chamada a DAO e que abastecerá a propriedade rows;
-     * Esse método é importante pois como a model é "vista" na View a propriedade
-     * $rows será acessada e possibilitará listar os registros vindos do banco de dados
-     */
+   
     public function getByCpfAndSenha($cpf, $senha) : CorrentistaModel
     {      
         return (new CorrentistaDAO())->selectByCpfAndSenha($cpf, $senha);
