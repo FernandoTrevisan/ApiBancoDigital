@@ -7,16 +7,18 @@ use Exception;
 
 class CorrentistaController extends Controller
 {
+    
     public static function login()
     {
         try
         {
-            // Transformando os dados da entrada enviada do app em
-            // JSON para um objeto em PHP.
+           
             $data = json_decode(file_get_contents('php://input'));
 
+            
             $model = new CorrentistaModel();
 
+            
             parent::getResponseAsJSON($model->getByCpfAndSenha($data->Cpf, $data->Senha)); 
 
         } catch(Exception $e) {
@@ -26,18 +28,18 @@ class CorrentistaController extends Controller
         }  
     }
 
-    /**
-     * Preenche um Model para que seja enviado ao banco de dados para salvar.
-     */
+    
     public static function salvar()
     {
         try
         {
+            
             $data = json_decode(file_get_contents('php://input'));
 
+            
             $model = new CorrentistaModel();
 
-            // Copiando os valores de $data para $model
+            
             foreach (get_object_vars($data) as $key => $value) 
             {
                 $prop_letra_minuscula = strtolower($key);
@@ -45,6 +47,7 @@ class CorrentistaController extends Controller
                 $model->$prop_letra_minuscula = $value;
             }
 
+            
             parent::getResponseAsJSON($model->save()); 
 
         } catch(Exception $e) {
