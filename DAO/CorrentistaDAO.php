@@ -67,7 +67,7 @@ class CorrentistaDAO extends DAO
         $stmt->execute();
 
         
-        $obj = $stmt->fetchObject("App\Model\CorrentistaModel");
+        $obj = $stmt->fetchObject("ApiBancoDigital\Model\CorrentistaModel");
 
         
         return is_object($obj) ? $obj : new CorrentistaModel();
