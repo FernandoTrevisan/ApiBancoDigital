@@ -1,7 +1,0 @@
-#0 C:\Users\Usuario\Desktop\ApiBancoDigital\DAO\CorrentistaDAO.php(45): PDOStatement->execute()
-#1 C:\Users\Usuario\Desktop\ApiBancoDigital\DAO\CorrentistaDAO.php(20): ApiBancoDigital\DAO\CorrentistaDAO->insert(Object(ApiBancoDigital\Model\CorrentistaModel))
-#2 C:\Users\Usuario\Desktop\ApiBancoDigital\Model\CorrentistaModel.php(19): ApiBancoDigital\DAO\CorrentistaDAO->save(Object(ApiBancoDigital\Model\CorrentistaModel))
-#3 C:\Users\Usuario\Desktop\ApiBancoDigital\Controller\CorrentistaController.php(51): ApiBancoDigital\Model\CorrentistaModel->save()
-#4 C:\Users\Usuario\Desktop\ApiBancoDigital\rotas.php(37): ApiBancoDigital\Controller\CorrentistaController::salvar()
-#5 C:\Users\Usuario\Desktop\ApiBancoDigital\index.php(7): include('C:\\Users\\Usuari...')
-#6 {main}
